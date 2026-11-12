@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ClipForge — Your Video Clipper</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <nav><div class="brand"><span class="mark">▶</span> ClipForge<span class="muted">.local</span></div><span class="pill">Local MVP</span></nav>
+  <main>
+    <header>
+      <div class="eyebrow">YOUR OWN VIDEO CLIPPING WEBSITE</div>
+      <h1>Turn long videos into <span>vertical clips.</span></h1>
+      <p>Upload a recording, pick the moment, and export a vertical MP4. Everything runs on your computer.</p>
+    </header>
+    <section class="workspace">
+      <form id="clip-form" class="panel">
+        <h2>Create a clip</h2>
+        <label class="drop" for="video"><span class="upload-icon">⇧</span><strong>Choose your video</strong><small>MP4, MOV, or MKV · Max 512 MB</small><span class="selected" id="filename">No file selected</span></label>
+        <input id="video" name="video" type="file" accept=".mp4,.mov,.mkv,video/*" required hidden>
+        <div class="fields">
+          <label>Start time <small>seconds</small><input name="start" type="number" step="1" min="0" max="7200" value="0" required></label>
+          <label>Clip length <small>seconds</small><input name="duration" type="number" step="1" min="5" max="60" value="30" required></label>
+        </div>
+        <button type="submit" id="submit">Create vertical clip <span>→</span></button>
+        <div id="progress-wrap" class="progress-wrap" hidden><div class="progress-track"><div id="progress" class="progress"></div></div><span id="status" role="status">Uploading...</span></div>
+        <div id="result" class="result" role="status" hidden></div>
+      </form>
+      <aside class="panel details">
+        <div class="preview"><div class="phone"><span>9:16</span><div class="play">▶</div><small>720 × 1280</small></div></div>
+        <h3>Your first version</h3>
+        <ul><li>✓ Upload video files</li><li>✓ Select clip timestamps</li><li>✓ Convert to vertical format</li><li>✓ Download generated MP4</li></ul>
+        <div class="notice"><strong>Coming next:</strong> AI highlight selection, subtitles, smart reframing, and accounts. Those features aren't in this starter yet.</div>
+      </aside>
+    </section>
+  </main>
+  <footer>Built with HTML, CSS, JavaScript, Python Flask, and FFmpeg. No website builder.</footer>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
